@@ -1,7 +1,3 @@
-Here’s a simple structure for your documentation, focusing on clarity since it's for your assignment. You can customize the content as needed!
-
----
-
 # NPMJS Clone Documentation
 
 ## Overview
