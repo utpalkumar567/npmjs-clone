@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Searchpage from "./components/Searchpage";
+import Header from "./components/Header";
+import Body from "./components/Body"; // Assuming Body will use Outlet for nested routing
+import Modulepage from "./components/Modulepage";
+import Footer from "./components/Footer";
+import Banner from "./components/Banner";
+
+// Creating the router
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Body />,
+    children: [
+      { path: "/", element: <Banner /> },
+      {
+        path: "search",
+        element: <Searchpage />,
+      },
+      {
+        path: "package/*",
+        element: <Modulepage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <RouterProvider router={appRouter} />
+      <Footer />
     </div>
   );
 }
